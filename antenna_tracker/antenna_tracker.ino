@@ -28,9 +28,16 @@ void loop() {
     // Hitung perbedaan sudut yang perlu ditempuh
     int angleDifference = targetAngle - currentAngle;
 
+    // Normalisasi perbedaan sudut agar berada dalam rentang -180 hingga 180 derajat
+    if (angleDifference > 180) {
+      angleDifference -= 360;
+    } else if (angleDifference < -180) {
+      angleDifference += 360;
+    }
+
     // Konversi perbedaan sudut menjadi langkah motor
-    int stepsToMove = map(angleDifference, 0, 360, 0, stepsPerRevolution);
-    
+    int stepsToMove = map(angleDifference, -180, 180, -stepsPerRevolution / 2, stepsPerRevolution / 2);
+
     // Gerakkan motor ke sudut target
     myStepper.step(stepsToMove);
 
