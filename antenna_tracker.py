@@ -20,17 +20,18 @@ def calculate_azimuth(drone_lat, drone_lon, antenna_lat, antenna_lon):
     return azimuth
 
 # Data GPS
-drone_lat = -5.330610580600684
-drone_lon = 105.32083887689511
-antenna_lat = -5.330446338124928
-antenna_lon = 105.32083217137136
+drone_lat = -5.330584655499501
+drone_lon = 105.32084200326408
+antenna_lat = -5.330439409846701
+antenna_lon = 105.32083424043755
+
 
 # Hitung azimuth
 azimuth = calculate_azimuth(drone_lat, drone_lon, antenna_lat, antenna_lon)
 print(f"Azimuth: {azimuth} derajat")
 
 # Komunikasi dengan Arduino
-arduino = serial.Serial('COM4', 9600, timeout=1)
+arduino = serial.Serial('COM3', 9600, timeout=1)
 time.sleep(2)
 
 # Mengirim data sudut ke Arduino
